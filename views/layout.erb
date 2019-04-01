@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta name="google-site-verification" content="s2djlpmUkGmhsrF8UXWCx0VNLyhYAxieTvS96nDgkDg">
+  <title><%= @title %></title>
+  <link rel="icon" type="image/png" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.17.0/feather.js"></script>
+</head>
+<body>
+	<header>
+    <div class="header_content right">
+      <a href="http://www.youtube.com/" id="yt_logo"></a>
+      <a id="logo" href="/"></a>
+    </div>
+
+
+	  <div class="header_content center">
+	    <%= yield_content(:header_content_center) %>
+	  </div>
+
+	  <div class="header_content left">
+	  	<%= yield_content(:header_content_left) %>
+
+<!--       <a class="icon" href="/yt_connect">
+        <i data-feather="user"></i>
+      </a> -->
+
+	  	<a class="icon" href="/settings" class="settings">
+	  		<i data-feather="settings"></i>
+	  	</a> 
+
+
+
+	  </div>
+	</header>
+	<%= yield %>
+</body>
+</html>

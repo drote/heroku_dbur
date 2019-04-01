@@ -1,0 +1,23 @@
+{
+  "name": "accessible_youtube",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.15.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drote/accessible_youtube.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drote/accessible_youtube/issues"
+  },
+  "homepage": "https://github.com/drote/accessible_youtube#readme"
+}

@@ -1,0 +1,7 @@
+---
+0:
+  settings: '{"gaze_aware":"on","gaze_aware_rest":"off","select_delay":"5","click_delay":"15","row_number":"3","col_number":"4","background_color":"#c4c4c4","select_color":"#e89999","controls_location":"left","controls_width":"18","open_in_youtube":"off"}'
+1:
+  settings: 
+2:
+  settings: '{"gaze_aware":"on","gaze_aware_rest":"on","select_delay":"5","click_delay":"15","row_number":"3","col_number":"4","background_color":"#c4c4c4","select_color":"#e89999","controls_location":"left","controls_width":"16","open_in_youtube":"off","show_controls":"on"}'

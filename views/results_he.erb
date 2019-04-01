@@ -1,0 +1,102 @@
+<main>
+
+  <section id="content"></section>
+
+  <div id="player_container">
+    <div id="player"></div>
+  </div>
+  <div id="seperator"></div>
+
+</main>
+
+<div id="controls"></div>
+
+<script type="text/handlebars-x" id="vid_thumb_partial" class="partial">
+<div class="wrapper">
+    <figure
+    data-vid_id={{id}}>
+      <img src="{{img}}" alt="{{description}}">
+      <figcaption
+        {{#if (isHebrew title)}}
+          style="direction: rtl"
+        {{/if}}>
+        {{{shortenTitle title}}}
+      </figcaption>
+    </figure>
+  </div>
+</script>
+
+<script type="text/handlebars-x" id="thumbnails_template">
+  {{#each vids}}
+    {{> vid_thumb_partial}}
+  {{/each}}
+</script>
+
+<script type="text/handlebars-x" id="search_header_template">
+  <p style="direction: rtl;">מציג תוצאות עבור:</p><span id="query">{{title}}</span>
+</script>
+
+<script type="text/handlebars-x" id="playlist_header_template">
+  <img src="{{snippet.thumbnails.medium.url}}" alt="{{snippet.description}}">
+  <span id="query"
+    {{#if (isHebrew snippet.title)}}
+      style="direction: rtl"
+    {{/if}}>
+  {{snippet.title}}</span>
+  </script>
+
+<script type="text/handlebars-x" id="channel_header_template">
+  <img src="{{snippet.thumbnails.medium.url}}" alt="{{snippet.description}}">
+  <span id="query" 
+    {{#if (isHebrew snippet.title)}}
+      style="direction: rtl"
+    {{/if}}>
+  {{snippet.title}}</span>
+</script>
+
+<script type="text/handlebars-x" id="related_vids_header_template">
+  <img src="{{snippet.thumbnails.medium.url}}" alt="{{snippet.description}}">
+  <span id="query" 
+    {{#if (isHebrew snippet.title)}}
+      style="direction: rtl"
+    {{/if}}
+  >{{snippet.title}}</span><p style="direction: rtl">סרטונים קשורים:</p>
+</script>
+
+<script type="text/handlebars-x" id="ga_break_button_template">
+  <div class="button clickable" id="ga_break_toggle">
+    <p>לראות</p>
+  </div>    
+</script>
+
+<script type="text/handlebars-x" id="nav_controls_template">
+  <div class="button nav_control" id="new_search">
+    <p>חיפוש חדש</p>
+  </div>
+
+  <div class="button nav_control" id="pg_up">
+    <p>סרטונים קודמים</p>
+  </div>
+
+  <div class="button nav_control" id="pg_down">
+    <p>סרטונים נוספים</p>
+  </div>
+</script>
+
+<script type="text/handlebars-x" id="play_controls_template">
+  <div class="button play_control" id="play_toggle">
+    <p>נגן</p>
+  </div>
+
+  <div class="button play_control" id="exit">
+    <p>יציאה</p>
+  </div>
+
+  <div class="button play_control" id="related_videos">
+    <p>סרטונים קשורים</p>
+  </div>
+</script>
+
+<script type="var" id="user_id"><%= @user_id %></script>
+<script type="text/javascript" src="javascripts/youtube_script.js"></script>
+<script type="text/javascript" src="javascripts/results.js"></script>

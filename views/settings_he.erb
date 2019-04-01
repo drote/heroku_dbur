@@ -1,0 +1,167 @@
+<% content_for :header_content_center do %>
+  <h1>הגדרות</h1>
+<% end %>
+
+<main>
+  <form data-id="<%= @user_id %>" action="/api/user_settings/<%= @user_id %>" method="post" id="settings">
+    <fieldset>
+      <input type="reset" value="איפוס הגדרות" form="settings">
+
+      <dl>
+        <dt>בחירה בהשהייה</dt>
+        <dd>
+        <label>
+          <input type="radio" name="gaze_aware" value="on" checked>
+          כן
+        </label>
+        <label>
+          <input type="radio" name="gaze_aware" value="off" >
+          לא
+        </label>
+        </dd>
+      </dl>
+
+      <dl>
+        <dt>מצב מנוחה במסך תוצאות</dt>
+        <dd>
+        <label>
+          <input type="radio" name="gaze_aware_rest" value="on" >
+          כן
+        </label>
+        <label>
+          <input type="radio" name="gaze_aware_rest" value="off" checked>
+          לא
+        </label>
+        </dd>
+      </dl>
+
+      <dl>
+        <dt>
+          <label for="select_delay">
+           המתנה לפני תחילת השהייה:
+          </label>
+          <span class="slider_value" id="select_delay_span">
+            1
+          </span>
+        </dt>
+        <dd>
+          <input type="range" name="select_delay"
+                   id="select_delay" value="10" min="1" max="50">
+        </dd>
+
+        <dt>
+          <label for="click_delay">
+            השהייה לבחירה:
+          </label>
+          <span class="slider_value" id="click_delay_span">
+            1
+          </span>
+        </dt>
+        <dd>
+          <input type="range" name="click_delay"
+                   id="click_delay" value="10" min="1" max="50">
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          <label for="row_number">מספר שורות:</label>
+        </dt>
+        <dd>
+          <select name="row_number" id="row_number">
+            <option>1</option>
+            <option selected>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </dd>
+
+        <dt>
+          <label for="col_number">מספר עמודות:</label>
+        <dd>
+          <select name="col_number" id="col_number">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option selected>4</option>
+            <option>5</option>
+          </select>
+        </dd>
+      </dl>
+      <dl>
+        <dt>צבע רקע</dt>
+        <dd>
+          <input name="background_color" type="color" value="#fafafa">
+        </dd>
+
+        <dt>צבע הדגשה</dt>
+        <dd>
+          <input name="select_color" type="color" value="#b22222">
+        </dd>
+      </dl>
+
+      <dl>
+        <dt>מיקום סרגל כלים</dt>
+        <dd>
+          <label>
+            <input type="radio" name="controls_location" value="right" checked>
+            ימין
+          </label>
+          <label>
+            <input type="radio" name="controls_location" value="left" >
+            שמאל
+          </label>
+        </dd>
+      </dl>
+
+      <dl>
+        <dt>
+          <label for="controls_width">
+          רוחב סרגל כלים (באחוזים)
+          </label>
+          <span class="slider_value" id="controls_width_span">
+            1
+          </span>
+        </dt>
+
+        <dd>
+          <input type="range" name="controls_width"
+                   id="controls_width" value="10" min="0" max="100">
+        </dd>
+      </dl>
+
+      <dl>
+        <dt>פתח סרטונים באתר של יוטיוב</dt>
+        <dd>
+          <label>
+            <input type="radio" name="open_in_youtube" value="on">
+            כן
+          </label>
+          <label>
+            <input type="radio" name="open_in_youtube" value="off" checked>
+            לא
+          </label>
+        </dd>
+      </dl>
+
+      <dl>
+        <dt>הצגת כפתורי שליטה</dt>
+        <dd>
+          <label>
+            <input type="radio" name="show_controls" value="on">
+            כן
+          </label>
+
+          <label>
+            <input type="radio" name="show_controls" value="off" checked>
+            לא
+          </label>
+        </dd>
+      </dl>
+
+      <input type="submit" value="שמור">
+    </fieldset>
+  </form>
+</main>
+
+<script type="text/javascript" src="javascripts/settings.js"></script>

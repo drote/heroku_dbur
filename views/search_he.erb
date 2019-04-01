@@ -1,0 +1,11 @@
+<% content_for :header_content_center do %>
+  <form action="/results" method="get" id="search">
+  </form>
+
+  <input type="text" name="query" placeholder="חיפוש" form="search">
+  <button form="search" class="search">
+    <i data-feather="search"></i>
+  </button>
+<% end %>
+
+<script type="text/javascript" src="javascripts/search.js"></script>
