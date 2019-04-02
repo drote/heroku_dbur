@@ -261,9 +261,9 @@ figcaption {
 	margin: 0 auto;
 	width: 95%;
 	background-size: var(--controlsBGSize);  
-	background-position: center 5px;	
   background-repeat: no-repeat;
   position: relative;
+	background-position: center 5px;
 }
 
 .clickable {
@@ -339,7 +339,7 @@ figcaption {
 	background-color: orange;
 }
 
-#related_videos:not(.clickable)::after {
+.button:not(.clickable)::after {
 	content: "";
 	display: inline-block;
 	position: absolute;
@@ -450,19 +450,22 @@ form input[type="color"] {
 	height: 35px;
 }
 
-form input[type="submit"] {
+form input[type="submit"],
+input[form="feed"] {
 	color: var(--highlightColor);
 	font-size: 1rem;
 	font-weight: 600;
 	width: 100%;
 }
 
-form input[type="submit"]:hover {
+form input[type="submit"]:hover,
+input[form="feed"]:hover {
 	background-color: var(--highlightColor);
 	color: var(--mainLightColor);
 }
 
-input[type="submit"] {
+input[type="submit"],
+input[form="feed"] {
 	float: left;
 }
 
@@ -472,4 +475,26 @@ form input[type="reset"] {
   top: 24px;
   transform: translateX(105%);
   box-shadow: inset 0 0 4px 1px #b22222;
+}
+
+/* FEED EDIT FORM */
+.wrpper dl,
+.wrapper dt,
+.wrapper dd {
+	font-size: 1rem;
+}
+
+.wrapper dl {
+	box-shadow: none;
+	margin: 0;
+	padding: 7px 9px;
+}
+
+.wrapper label {
+	display: block;
+}
+
+input[form="feed"] {
+	margin-right: 150px;
+	width: 20%;
 }

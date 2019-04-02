@@ -282,8 +282,8 @@ $(function() {
 		const getFontSize = (rowNum) => FONT_THUMB_SIZES[rowNum]['font'];
 		const getThumbSize = (colNum) => FONT_THUMB_SIZES[colNum]['thumb'];
 		const getRightMarginPercent = (colNum) => colNum === 1 ? '5%' : '2.5%';
-		const getControlsFontSize = (controlsWidth) => controlsWidth < 11 ? '1rem' : '1.8rem';
-		const getControlBGSize = (controlsWidth) => controlsWidth < 11 ? '70%' : 'calc(70vh / 4)';
+		const getControlsFontSize = (controlsWidth) => controlsWidth < 11 ? '1rem' : '1.6rem';
+		const getControlBGSize = (controlsWidth) => controlsWidth < 11 ? '70%' : 'calc(60vh / 4)';
 
 		const ajaxCall = function(url, data) {
 			return $.ajax({ url, data })
@@ -352,16 +352,12 @@ $(function() {
 		}
 
 		const mouseInGeneric = function(e) {
-			if (this.gaInactive()) return;
-
 			let $elm = $(e.currentTarget);
 
 			this.gazeGeneric($elm);
 		}
 
 		const mouseOutGeneric = function(e) {
-			if (this.gaInactive()) return;
-
 			this.cancelGazeAction();
 		}
 
@@ -422,13 +418,13 @@ $(function() {
 				$content.on('mouseenter', '.wrapper', vidMouseIn.bind(this));
 				// $content.on('mouseleave', '.wrapper', vidMouseOut.bind(this));
 				$content.on('click', '.wrapper', vidClick.bind(this));
-				$controlsContainer.on('click', '#new_search', this.goHome);
-				$controlsContainer.on('click', '#pg_up', () => this.respondToNavKey('pageUp'));
-				$controlsContainer.on('click', '#pg_down', () => this.respondToNavKey('pageDown'));
+				$controlsContainer.on('click', '#new_search.clickable', this.goHome);
+				$controlsContainer.on('click', '#pg_up.clickable', () => this.respondToNavKey('pageUp'));
+				$controlsContainer.on('click', '#pg_down.clickable', () => this.respondToNavKey('pageDown'));
 				$controlsContainer.on('click', '#ga_break_toggle', gaToggleClick.bind(this));
-				$controlsContainer.on('click', '#play_toggle', () => this.respondToPlayKey('k'));
-				$controlsContainer.on('click', '#related_videos', () => this.respondToPlayKey('r'));
-				$controlsContainer.on('click', '#exit', () => this.respondToPlayKey('escape'));
+				$controlsContainer.on('click', '#play_toggle.clickable', () => this.respondToPlayKey('k'));
+				$controlsContainer.on('click', '#related_videos.clickable', () => this.respondToPlayKey('r'));
+				$controlsContainer.on('click', '#exit.clickable', () => this.respondToPlayKey('escape'));
 			},
 			getParams() {
 				const urlParams = new URLSearchParams(window.location.search);
@@ -453,7 +449,15 @@ $(function() {
 			},
 			directPlayProtocol() {
 				this.initSettings()
-						.then(() => this.startVidFromParams());
+						.then(() => {
+							this.setCSSProperties();
+
+							if (this.showControls()) {
+								this.initNavControls();
+							}
+
+							this.startVidFromParams();
+						});
 			},
 			initSettings() {
 				const that = this;
@@ -790,7 +794,7 @@ $(function() {
 
 					this.removeProgressCircle();
 					$elm.removeClass('clickable');
-					setTimeout(() => $elm.addClass('clickable'), 1000);
+					setTimeout(() => $elm.addClass('clickable'), 500);
 				}, clickDelay );
 			},
 			// pauseGaForBuffer() {
@@ -936,14 +940,23 @@ $(function() {
 					this.toggleGaBreakButton();
 				}
 
+				if (!this.gaRestMode()) {
+					$('.button').not('#ga_break_toggle').removeClass('clickable');
+				}
+
 				this.gazeBreak = true;
 			},
 			endGazeBreak() {
 				if (this.gazeBreak === false) return;
+
 				if (this.showControls()) {
 					this.toggleGaBreakButton();
 				}
 				
+				if (!this.gaRestMode()) {
+					$('.button').not('#ga_break_toggle').addClass('clickable');
+				}
+
 				this.gazeBreak = false;
 
 			},
