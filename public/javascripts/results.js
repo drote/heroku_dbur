@@ -393,7 +393,7 @@ $(function() {
 				this.getParams();
 
 				if (this.directPlay()) {
-					this.startVidFromParams();
+					this.directPlayProtocol();
 					return;
 				}
 
@@ -450,6 +450,10 @@ $(function() {
 							this.checkStartGazeBreak();
 						})
 						.fail(() => this.alertFailure());
+			},
+			directPlayProtocol() {
+				this.initSettings()
+						.then(() => this.startVidFromParams());
 			},
 			initSettings() {
 				const that = this;
