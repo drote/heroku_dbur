@@ -1,0 +1,42 @@
+<% content_for :header_content_center do %>
+	<h1>עריכת דף בית</h1>
+<% end %>
+
+<main>
+	<form data-id="<%= @user_id %>" action="/api/feed/<%= @user_id %>" method="post" id="feed">
+    <fieldset>
+      <dl>
+        <dt>סוג</dt>
+        <dd>
+          <label>
+            <input type="radio" name="resource_type" value="query" clicked>
+              חיפוש
+          </label>
+
+          <label>
+            <input type="radio" name="resource_type" value="playlist">
+              רשימה
+          </label>
+
+          <label>
+            <input type="radio" name="resource_type" value="channel">
+              ערוץ
+          </label>
+        </dd>
+
+        <dt>
+          <label for="resource">מונח חיפוש/מזהה</label>
+        </dt>
+        <dd>
+          <input type="text" name="resource">
+        </dd>
+      </dl>
+    </fieldset>
+
+    <input type="submit" value="שמור" form="feed">
+	</form>
+</main>
+<script type="text/handlebars-x" type="partial">
+
+</script>
+<script type="text/javascript" src="feed_edit"></script>

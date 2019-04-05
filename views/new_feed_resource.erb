@@ -1,0 +1,42 @@
+<div id="fields"></div>
+<link rel="stylesheet" type="text/css" href="/stylesheets/reset.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.17.0/feather.js"></script>
+
+<script type="text/handlebars-x" id="type_selection_template">
+  <p>סוג</p>
+  <ul>
+	  <li><a href="#" class="type" data-type="search">חיפוש</a></li>
+	  <li><a href="#" class="type" data-type="playlist">רשימה</a></li>
+	  <li><a href="#" class="type" data-type="channel">ערוץ</a></li>
+	  <li><a href="#" class="type" data-type="video">סרטון</a></li>
+	</ul>
+</script>
+
+<script type="text/handlebars-x" id="resource_selection_template">
+	<p>{{ label }}</p>
+  <input type="text" name="resource">
+  <a href="/" id="select_resource">המשך</a>
+</script>
+
+<script type="text/handlebars-x" id="image_selector_template">
+	<i data-feather="chevron-up"></i>
+	<div class="image_container">
+		{{#each images}}
+			{{> imagePartial}}
+		{{/each}}
+	</div>
+	<i data-feather="chevron-down"></i>
+	<a href="#" id="select_img">בחר</a>
+</script>
+
+<script type="text/handlebars-x" id="image_partial">
+	<img src="{{ this }}">
+</script>
+
+<script type="var" id="user_id"><%= @user_id %></script>
+<script type="var" id="resource_idx"><%= @resource_idx %></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/new_feed_resource.js"></script>

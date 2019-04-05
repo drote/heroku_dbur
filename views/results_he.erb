@@ -12,7 +12,11 @@
 <div id="controls"></div>
 
 <script type="text/handlebars-x" id="vid_thumb_partial" class="partial">
-<div class="wrapper">
+  <div href="{{href}}" class="wrapper" id="wrapper_{{ id }}">
+    <div class="edit_bar">
+      <a class="delete_wrapper"></a>
+      <a class="edit_wrapper"></a>
+    </div>
     <figure
     data-vid_id={{id}}>
       <img src="{{img}}" alt="{{description}}">
@@ -24,6 +28,15 @@
       </figcaption>
     </figure>
   </div>
+</script>
+
+<script type="text/handlebars-x" id="empty_wrapper_template">
+<div href="#" class="wrapper empty" id="wrapper_undefined">
+  <div class="edit_bar">
+    <a class="delete_wrapper"></a>
+    <a class="edit_wrapper"></a>
+  </div>
+</div>
 </script>
 
 <script type="text/handlebars-x" id="thumbnails_template">
@@ -47,16 +60,21 @@
 
 <script type="text/handlebars-x" id="channel_header_template">
   <img src="{{snippet.thumbnails.medium.url}}" alt="{{snippet.description}}">
-  <span id="query" 
+  <span id="query"
     {{#if (isHebrew snippet.title)}}
       style="direction: rtl"
     {{/if}}>
   {{snippet.title}}</span>
 </script>
 
+<script type="text/handlebars-x" id="feed_header_template">
+  <a href="#" class="icon" id="edit_feed"><i data-feather="edit-2"></i></a>
+  <span id="query">מסך חיפושים שמורים</span>
+</script>
+
 <script type="text/handlebars-x" id="related_vids_header_template">
   <img src="{{snippet.thumbnails.medium.url}}" alt="{{snippet.description}}">
-  <span id="query" 
+  <span id="query"
     {{#if (isHebrew snippet.title)}}
       style="direction: rtl"
     {{/if}}
@@ -66,7 +84,7 @@
 <script type="text/handlebars-x" id="ga_break_button_template">
   <div class="button clickable" id="ga_break_toggle">
     <p>לראות</p>
-  </div>    
+  </div>
 </script>
 
 <script type="text/handlebars-x" id="nav_controls_template">
@@ -88,12 +106,12 @@
     <p>נגן</p>
   </div>
 
-  <div class="button play_control" id="exit">
-    <p>יציאה</p>
-  </div>
-
   <div class="button play_control" id="related_videos">
     <p>סרטונים קשורים</p>
+  </div>
+
+  <div class="button play_control" id="exit">
+    <p>יציאה</p>
   </div>
 </script>
 

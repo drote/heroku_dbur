@@ -115,7 +115,7 @@ const PlayerManager = (function() {
 			return this;
 		},
 		toggleFullScreen() {
-			let playerContainer = $playerContainer.get(0);
+			let playerContainer = $('#player_container').get(0);
 
 			if (isFullScreen()) {
 				cancelFullscreen();
