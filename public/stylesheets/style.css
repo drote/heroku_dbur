@@ -599,3 +599,10 @@ img + img {
 .feather-chevron-down {
 	cursor: pointer;
 }
+
+.empty {
+	background-image: url('../data/icons/plus.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: var(--mainLightColor);
+}
